@@ -14,8 +14,9 @@ import com.example.calculator.R;
 
 public class VarFragment extends Fragment {
 
+    public DisplayFragment displayFragment;
+    public VarAdapter varAdapter;
     RecyclerView recyclerView;
-    VarAdapter varAdapter;
 
     public VarFragment() {
         // Required empty public constructor
@@ -30,7 +31,7 @@ public class VarFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_record, container, false);
 
-        varAdapter = new VarAdapter();
+        varAdapter = new VarAdapter(displayFragment);
         recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setAdapter(varAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

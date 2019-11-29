@@ -26,6 +26,8 @@ public class MyPagerAdapter extends FragmentPagerAdapter {
 
         baseFragment.displayFragment = displayFragment;
         baseFragment.recordFragment = recordFragment;
+        baseFragment.varFragment = varFragment;
+        varFragment.displayFragment = displayFragment;
 
         fragments.add(baseFragment);
         fragments.add(varFragment);
