@@ -2,20 +2,21 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:padding="10dp">
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="변수명"
+        android:hint="a"
         android:inputType="text"
         android:background="@null"
         android:maxLength="1"
         android:layout_marginLeft="5dp"
         android:textSize="40dp"
-        android:textAlignment="center"/>
+        android:textAlignment="center"
+        android:id="@+id/var"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -27,10 +28,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@null"
-        android:hint="값"
+        android:hint="0"
         android:layout_marginLeft="30dp"
         android:textSize="20dp"
-        android:inputType="number"/>
+        android:inputType="number"
+        android:id="@+id/value"/>
 
 
 
