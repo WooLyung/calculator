@@ -205,10 +205,11 @@ public class BaseFragment extends Fragment {
         return view;
     }
 
-    String calc(String expression) {
+    public String calc(String expression) {
         boolean isRevise = true;
 
         expression = expression.replace("π", "P");
+        expression = expression.replace("√", "R");
 
         while (isRevise) { // 곱셈 기호 생략된걸 다시 부활시킴
             isRevise = false;
@@ -228,18 +229,41 @@ public class BaseFragment extends Fragment {
                         break;
                     }
                 }
+                else if (expression.charAt(i) == 'R') {
+                    char k = expression.charAt(i - 1);
+
+                    if (k >= 'a' && k <= 'z'
+                            || k >= '0' && k <= '9'
+                            || k == 'P') { // 왼쪽이 문자 혹은 숫자일 경우
+                        String newExpression = expression.substring(0, i) + "*R" + expression.substring(i + 1);
+                        expression = newExpression;
+
+                        isRevise = true;
+                        break;
+                    }
+                }
             }
         }
 
-        for (char c = 'a'; c <= 'z'; c++) {
+        for (char c = 'a'; c <= 'z'; c++) { // 변수와 상수, 곱셈, 나눗셈 치환
             expression = expression.replace(c + "", varFragment.varAdapter.datas.get('z' - c).value + "");
         }
         expression = expression.replace("P", "3.1415926535");
+        expression = expression.replace("×", "*");
+        expression = expression.replace("÷", "/");
+        expression = expression.replace("R", "√");
 
         String result = "NaN";
 
         try {
-            result = calculater(expression) + "";
+            double res = calculater(expression);
+
+            if (Math.round(res) == res) {
+                result = Math.round(res) + "";
+            }
+            else {
+                result = res + "";
+            }
         }
         catch (Exception e) {
             result = "NaN";
@@ -252,8 +276,6 @@ public class BaseFragment extends Fragment {
     }
 
     public static double calculater(String string2) {
-
-        Log.i("asdf", string2);
 
         Double[] num = new Double[100];
         Double[] num2= new Double[100];

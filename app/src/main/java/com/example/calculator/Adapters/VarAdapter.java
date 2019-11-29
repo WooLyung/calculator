@@ -70,6 +70,7 @@ public class VarAdapter extends  RecyclerView.Adapter<VarAdapter.VarHolder> {
                 @Override
                 public void onClick(View view) {
                     displayFragment.expression.setText(displayFragment.expression.getText().toString() + datas.get(index).var);
+                    displayFragment.result.setText("");
                 }
             });
 

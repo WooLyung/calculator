@@ -17,12 +17,16 @@ public class MyPagerAdapter extends FragmentPagerAdapter {
     private ArrayList<Fragment> fragments = new ArrayList<>();
     private ArrayList<String> titles = new ArrayList<>();
 
+    public BaseFragment baseFragment;
+    public VarFragment varFragment;
+    public RecordFragment recordFragment;
+
     public MyPagerAdapter(FragmentManager fm, DisplayFragment displayFragment) {
         super(fm);
 
-        BaseFragment baseFragment = new BaseFragment();
-        VarFragment varFragment = new VarFragment();
-        RecordFragment recordFragment = new RecordFragment();
+        baseFragment = new BaseFragment();
+        varFragment = new VarFragment();
+        recordFragment = new RecordFragment();
 
         baseFragment.displayFragment = displayFragment;
         baseFragment.recordFragment = recordFragment;
