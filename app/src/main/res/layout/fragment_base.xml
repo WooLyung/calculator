@@ -20,28 +20,29 @@
         <!--초기화하는 버튼 -->
 
         <Button
-            android:id="@+id/button_infinite"
+            android:id="@+id/button_bracketL"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="∞"
+            android:text="("
             android:textSize="30dp"
             style="@style/button"/>
 
         <Button
-            android:id="@+id/button_root"
+            android:id="@+id/button_bracketR"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="√"
+            android:text=")"
             android:textSize="30dp"
             style="@style/button"/>
 
         <Button
-            android:id="@+id/button_backspace"
+            android:id="@+id/button_PI"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text=""
+            android:text="π"
             android:textSize="30dp"
             style="@style/button"/>
+
     </LinearLayout>
 
     <LinearLayout
@@ -59,18 +60,19 @@
             style="@style/button"/>
 
         <Button
-            android:id="@+id/button_bracket"
+            android:id="@+id/button_root"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="( )"
+            android:text="√"
             android:textSize="30dp"
             style="@style/button"/>
 
         <Button
-            android:id="@+id/button_percent"
+            android:id="@+id/button_backspace"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="%"
+            android:text="←"
+            android:textStyle="bold"
             android:textSize="30dp"
             style="@style/button"/>
 
@@ -194,13 +196,12 @@
         android:layout_weight="1"
         android:orientation="horizontal">
         <Button
-            android:id="@+id/button_plusMinus"
+            android:id="@+id/button_zerozero"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="±"
+            android:text="00"
             android:textSize="30dp"
             style="@style/button"/>
-        <!--부호임 플러스마이너스-->
         <Button
             android:id="@+id/button_zero"
             android:layout_height="wrap_content"
@@ -219,7 +220,6 @@
             android:id="@+id/button_equals"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#ccffffcc"
             android:text="="
             android:textSize="30dp"
             style="@style/button"/>

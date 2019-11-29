@@ -2,28 +2,24 @@ package com.example.calculator.Adapters;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.calculator.R;
+import com.example.calculator.RecordData;
 
 import java.util.ArrayList;
 
 public class RecordAdapter extends  RecyclerView.Adapter<RecordAdapter.RecordHolder> {
 
-    ArrayList<RecordData> datas = new ArrayList<>();
+    static public ArrayList<RecordData> datas = new ArrayList<>();
+    static public boolean able = false;
 
     public RecordAdapter() {
-        datas.add(new RecordData("2+2", "4"));
-        datas.add(new RecordData("2*2", "4"));
-        datas.add(new RecordData("2^2", "4"));
-        datas.add(new RecordData("2-2+4", "4"));
-        datas.add(new RecordData("4-0", "4"));
-        datas.add(new RecordData("16/4", "4"));
-        datas.add(new RecordData("8-4", "4"));
-        datas.add(new RecordData("2*2+0", "4"));
+        able = true;
     }
 
     @NonNull
@@ -48,7 +44,6 @@ public class RecordAdapter extends  RecyclerView.Adapter<RecordAdapter.RecordHol
     }
 
     class RecordHolder extends  RecyclerView.ViewHolder {
-
         TextView expression, result;
 
         public RecordHolder(@NonNull View itemView) {
@@ -56,16 +51,6 @@ public class RecordAdapter extends  RecyclerView.Adapter<RecordAdapter.RecordHol
 
             expression = itemView.findViewById(R.id.expression);
             result = itemView.findViewById(R.id.result);
-        }
-    }
-
-    public class RecordData {
-        String expression;
-        String result;
-
-        RecordData(String expression, String result) {
-            this.expression = expression;
-            this.result = result;
         }
     }
 }
