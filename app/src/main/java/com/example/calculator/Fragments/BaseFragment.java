@@ -307,7 +307,20 @@ public class BaseFragment extends Fragment {
 
             if(s.charAt(i)=='('){
                 int j=0;
-                for(j=i;s.charAt(j)!=')';j++){}
+                int sans = 0;
+
+                for(j=i; ; j++) {
+                    if (s.charAt(j) == '(') {
+                        sans++;
+                    }
+
+                    if (s.charAt(j) == ')') {
+                        sans--;
+                        if (sans == 0) {
+                            break;
+                        }
+                    }
+                }
                 string=Double.toString(calculater(s.substring(i+1,j)));
 
                 i=j;
