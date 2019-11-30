@@ -208,6 +208,7 @@ public class BaseFragment extends Fragment {
     public String calc(String expression) {
         boolean isRevise = true;
 
+        String expression_ = expression;
         expression = expression.replace("π", "P");
         expression = expression.replace("√", "R");
 
@@ -270,7 +271,7 @@ public class BaseFragment extends Fragment {
         }
         displayFragment.result.setText("= " + result);
 
-        recordFragment.addData(expression, result);
+        recordFragment.addData(expression_, result);
 
         return result;
     }
