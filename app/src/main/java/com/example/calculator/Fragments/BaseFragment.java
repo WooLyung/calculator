@@ -270,13 +270,13 @@ public class BaseFragment extends Fragment {
             result = "NaN";
         }
         displayFragment.result.setText("= " + result);
-
         recordFragment.addData(expression_, result);
-
         return result;
     }
 
     public static double calculater(String string2) {
+
+        Log.i("asdf", "처음 : " + string2);
 
         Double[] num = new Double[100];
         Double[] num2= new Double[100];
@@ -348,13 +348,11 @@ public class BaseFragment extends Fragment {
                         else{
                             string1+=s.charAt(i);
                         }
-
-
                     }
                     if(flag==0){
                         b=Double.parseDouble(string1);
                     }
-                    
+
                     a = Math.pow(a, b);
                     i--;
                     string=Double.toString(a);
@@ -371,16 +369,19 @@ public class BaseFragment extends Fragment {
                             for(;s.charAt(i)!=')';i++);
                             a=(calculater(s.substring(q+1,i)));
                             flag=1;
+                            break;
                         }
                         else{
                             string1+=s.charAt(i);
                         }
                     }
                     if(flag==0){
-                        a=Double.parseDouble(string1);
+                        a = Double.parseDouble(string1);
                     }
-                    string=Double.toString(Math.sqrt(a));
 
+                    Log.i("asdf", a + "");
+                    string=Double.toString(Math.sqrt(a));
+                    Log.i("asdf", string);
                 }
                 if(s.charAt(i)=='+'|| s.charAt(i) =='-' || s.charAt(i) == '*' ||s.charAt(i)=='/'){
                     if (s.charAt(i) == '-' && s.charAt(i + 1) == '-') {
