@@ -276,7 +276,6 @@ public class BaseFragment extends Fragment {
 
     public static double calculater(String string2) {
 
-        Log.i("asdf", "처음 : " + string2);
 
         Double[] num = new Double[100];
         Double[] num2= new Double[100];
@@ -338,10 +337,16 @@ public class BaseFragment extends Fragment {
 
                     for(;s.charAt(i)!='+' && s.charAt(i) !='-' && s.charAt(i) != '*' && s.charAt(i) != '/'&&s.charAt(i)!='^'&&s.charAt(i)!='√';i++){
                         if(s.charAt(i)=='('){
-
                             int q=i;
-                            for(;s.charAt(i)!=')';i++);
-                            b=(calculater(s.substring(q+1,i)));
+                            int sans = 0;
+                            boolean start = true;
+                            for(;sans != 0 || start;i++) {
+                                start = false;
+                                if (s.charAt(i) == '(') sans++;
+                                if (s.charAt(i) == ')') sans--;
+
+                            }
+                            b = (calculater(s.substring(q+1,i - 1)));
                             flag=1;
                             break;
                         }
@@ -366,8 +371,14 @@ public class BaseFragment extends Fragment {
                     for(;s.charAt(i)!='+' && s.charAt(i) !='-' && s.charAt(i) != '*' && s.charAt(i) != '/'&&s.charAt(i)!='^'&&s.charAt(i)!='√';i++){
                         if(s.charAt(i)=='('){
                             int q=i;
-                            for(;s.charAt(i)!=')';i++);
-                            a=(calculater(s.substring(q+1,i)));
+                            int sans = 0;
+                            boolean start = true;
+                            for(;sans != 0 || start;i++) {
+                                start = false;
+                                if (s.charAt(i) == '(') sans++;
+                                if (s.charAt(i) == ')') sans--;
+                            }
+                            a = (calculater(s.substring(q+1,i - 1)));
                             flag=1;
                             break;
                         }
@@ -378,10 +389,7 @@ public class BaseFragment extends Fragment {
                     if(flag==0){
                         a = Double.parseDouble(string1);
                     }
-
-                    Log.i("asdf", a + "");
-                    string=Double.toString(Math.sqrt(a));
-                    Log.i("asdf", string);
+                    return Math.sqrt(a);
                 }
                 if(s.charAt(i)=='+'|| s.charAt(i) =='-' || s.charAt(i) == '*' ||s.charAt(i)=='/'){
                     if (s.charAt(i) == '-' && s.charAt(i + 1) == '-') {
@@ -418,7 +426,6 @@ public class BaseFragment extends Fragment {
                 num[numi]=Double.parseDouble(string);
                 numi++;
             }
-
         }
         int numi2=0;
         int opi2=0;
