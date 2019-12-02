@@ -254,6 +254,12 @@ public class BaseFragment extends Fragment {
         expression = expression.replace("÷", "/");
         expression = expression.replace("R", "√");
 
+        for (int i = 0; i <= 9; i++) { // 괄호 옆에 생략된 곱셈 부활
+            expression = expression.replace(i + "(", i + "*(");
+            expression = expression.replace(")" + i, ")*" + i);
+        }
+        expression = expression.replace(")(", ")*(");
+
         String result = "NaN";
 
         try {
@@ -302,8 +308,6 @@ public class BaseFragment extends Fragment {
         String string = "";
 
         for(int i = 0; i < s.length(); i++) {
-
-
             if(s.charAt(i)=='('){
                 int j=0;
                 int sans = 0;
@@ -321,7 +325,6 @@ public class BaseFragment extends Fragment {
                     }
                 }
                 string=Double.toString(calculater(s.substring(i+1,j)));
-
                 i=j;
             }
             else if(s.charAt(i) == '+' || s.charAt(i) =='-' || s.charAt(i) == '*' || s.charAt(i) == '/'||s.charAt(i)=='^'||s.charAt(i)=='√') {
@@ -431,6 +434,7 @@ public class BaseFragment extends Fragment {
         int opi2=0;
 
         Integer returnvalue=0;
+
         for(int i=0;i<=opi;i++){
             num2[numi2]=num[i];
             numi2++;
@@ -440,7 +444,6 @@ public class BaseFragment extends Fragment {
                         num2[numi2-1]*=num[i+1];
                     if(op[i]=='/')
                         num2[numi2-1]/=num[i+1];
-
                 }
             }
             op2[opi2]=op[i];
