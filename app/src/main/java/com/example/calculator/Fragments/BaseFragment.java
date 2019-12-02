@@ -212,7 +212,7 @@ public class BaseFragment extends Fragment {
         expression = expression.replace("π", "P");
         expression = expression.replace("√", "R");
 
-        while (isRevise) { // 곱셈 기호 생략된걸 다시 부활시킴
+        while (isRevise) { // 곱셈 기호 생략된걸 다시 부활시킴, 음수값 버그 수정
             isRevise = false;
 
             for (int i = 1; i < expression.length(); i++) {
@@ -354,11 +354,8 @@ public class BaseFragment extends Fragment {
                     if(flag==0){
                         b=Double.parseDouble(string1);
                     }
-
-                    double ab=a;
-                    for(int q=1;q<b;q++){
-                        a*=ab;
-                    }
+                    
+                    a = Math.pow(a, b);
                     i--;
                     string=Double.toString(a);
                 }
@@ -386,17 +383,28 @@ public class BaseFragment extends Fragment {
 
                 }
                 if(s.charAt(i)=='+'|| s.charAt(i) =='-' || s.charAt(i) == '*' ||s.charAt(i)=='/'){
-
-                    if(string!=""){
+                    if (s.charAt(i) == '-' && s.charAt(i + 1) == '-') {
+                        if(string == "") {
+                            string = "0";
+                        }
+                        op[opi] = '+';
+                        opi++;
+                        i++;
+                        num[numi] = Double.parseDouble(string);
+                        numi++;
+                        string="";
+                    }
+                    else {
+                        if(string == "") {
+                            string = "0";
+                        }
                         op[opi]=s.charAt(i);
                         opi++;
-                        num[numi]=Double.parseDouble(string);
+                        num[numi] = Double.parseDouble(string);
                         numi++;
                         string="";
                     }
                 }
-
-
             }
             else if(s.charAt(i)=='('|| s.charAt(i) ==')'||s.charAt(i) == '^' ||s.charAt(i)=='√'){
 
@@ -406,7 +414,6 @@ public class BaseFragment extends Fragment {
 
             }
             if(i+1==s.length()&&(s.charAt(i)!='+'|| s.charAt(i) !='-' || s.charAt(i) != '*' ||  s.charAt(i)!= '/'||s.charAt(i)!='^'||s.charAt(i)!='√')){
-                //System.out.println(string);
                 num[numi]=Double.parseDouble(string);
                 numi++;
             }
@@ -414,8 +421,6 @@ public class BaseFragment extends Fragment {
         }
         int numi2=0;
         int opi2=0;
-
-
 
         Integer returnvalue=0;
         for(int i=0;i<=opi;i++){

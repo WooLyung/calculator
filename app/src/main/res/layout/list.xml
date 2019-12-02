@@ -33,7 +33,7 @@
         android:layout_marginLeft="20dp"
         android:layout_gravity="center"
         android:textSize="30dp"
-        android:inputType="number"
+        android:inputType="numberSigned|numberDecimal"
         android:id="@+id/value"
         android:layout_weight="1"/>
     <Button
